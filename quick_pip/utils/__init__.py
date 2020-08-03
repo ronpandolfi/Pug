@@ -5,6 +5,16 @@ import os
 from functools import lru_cache
 import click
 from git import Repo
+from collections import defaultdict
+
+
+class keydefaultdict(defaultdict):
+    def __missing__(self, key):
+        if self.default_factory is None:
+            raise KeyError( key )
+        else:
+            ret = self[key] = self.default_factory(key)
+            return ret
 
 
 # TODO: add context
@@ -23,16 +33,30 @@ class Package(object):
         self.name = name
         self.distributions = distributions or []
 
+    def as_record(self):
+        return f"{self.name} {'(Installed)' if self.installed else ''}\n    {self.short_description or ''}"
+
+    @property
+    def installed(self):
+        return package_is_installed(self.name)
+
+    @property
+    def short_description(self):
+        for distribution in self.distributions:
+            if distribution.short_description:
+                return distribution.short_description
+
 
 class Distribution(object):
-    def __init__(self, name, mechanism, short_description, orgname=None):
+    distributor_name = ''
+
+    def __init__(self, name, short_description, orgname=None):
         self.name = name
-        self.mechanism = mechanism
         self.orgname = orgname
         self.short_description = short_description
 
     def as_record(self):
-        return f"{self.mechanism}:{self.orgname + '/' if self.orgname else ''}{self.name} {'(Installed)' if self.installed else ''}\n    {self.short_description or ''}"
+        return f"{self.distributor_name}:{self.orgname + '/' if self.orgname else ''}{self.name} {'(Installed)' if self.installed else ''}\n    {self.short_description or ''}"
 
     @property
     def installed(self):
@@ -43,12 +67,14 @@ class Distribution(object):
 
 
 class PyPIDistribution(Distribution):
+    distributor_name = 'pypi'
 
     def install(self, args):
         InstallCommand().main([self.name, *args])
 
 
 class GitDistribution(Distribution):
+    distributor_name = 'git'
 
     def __init__(self, *args, url, **kwargs):
         super(GitDistribution, self).__init__(*args, **kwargs)
@@ -59,10 +85,10 @@ class GitDistribution(Distribution):
         providers = ['editable clone', 'install to site-packages']
 
         print(f'There are {len(providers)} providers available for {self.name}:')
-        for i, provider in enumerate(providers):
+        for i, provider in reversed(list(enumerate(providers))):
             print(f"{[i+1]} {provider}")
 
-        provider_index = click.prompt(f'Select a provider:', type=int, default=1)-1
+        provider_index = int(input(f'Select a provider (default=1): ').strip() or 1)-1
 
         if not click.confirm('Do you want to continue?', default=True):
             return
@@ -76,7 +102,6 @@ class GitDistribution(Distribution):
             InstallCommand().main([f'git+{self.url}', *args])
 
 
-
 class GithubDistribution(GitDistribution):
     ...
 
@@ -84,6 +109,11 @@ class GithubDistribution(GitDistribution):
 def print_distributions(distributions):
     for i, distro in reversed(list(enumerate(distributions))):
         print(f"[{i + 1}] {distro.as_record()}")
+
+
+def print_packages(packages):
+    for i, package in reversed(list(enumerate(packages.values()))):
+        print(f"[{i + 1}] {package.as_record()}")
 
 
 def parse_selection(selection, count):
