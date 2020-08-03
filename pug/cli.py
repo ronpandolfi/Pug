@@ -1,4 +1,4 @@
-"""Console script for quick_pip."""
+"""Console script for pug."""
 import argparse
 from difflib import SequenceMatcher
 import sys
@@ -18,7 +18,7 @@ MAX_DISTRIBUTION_CHOICES = {"pypi": 50,  # PyPi's search capabilites are lacking
 
 
 def main():
-    """Console script for quick_pip."""
+    """Console script for pug."""
     parser = argparse.ArgumentParser()
     parser.add_argument('_', nargs='*')
     args = parser.parse_args()

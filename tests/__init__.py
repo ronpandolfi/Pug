@@ -1,1 +1,1 @@
-"""Unit test package for quick_pip."""
+"""Unit test package for pug."""

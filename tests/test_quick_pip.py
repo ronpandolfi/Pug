@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-"""Tests for `quick_pip` package."""
+"""Tests for `pug` package."""
 
 import pytest
 
 
-from quick_pip import quick_pip
+from pug import pug
 
 
 @pytest.fixture

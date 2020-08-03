@@ -25,5 +25,5 @@ deploy:
     secure: PLEASE_REPLACE_ME
   on:
     tags: true
-    repo: ronpandolfi/quick_pip
+    repo: ronpandolfi/pug
     python: 3.8
