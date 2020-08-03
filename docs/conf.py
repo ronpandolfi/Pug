@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'quick-pip'
+project = 'pug'
 copyright = "2020, Ronald J Pandolfi"
 author = "Ronald J Pandolfi"
 
@@ -128,7 +128,7 @@ latex_elements = {
 # [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'pug.tex',
-     'quick-pip Documentation',
+     'Pug Documentation',
      'Ronald J Pandolfi', 'manual'),
 ]
 
@@ -139,7 +139,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'pug',
-     'quick-pip Documentation',
+     'Pug Documentation',
      [author], 1)
 ]
 
@@ -151,7 +151,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'pug',
-     'pug Documentation',
+     'Pug Documentation',
      author,
      'pug',
      'One line description of project.',

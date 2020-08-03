@@ -38,8 +38,8 @@ and "help wanted" is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-quick-pip could always use more documentation, whether as part of the
-official quick-pip docs, in docstrings, or even on the web in blog posts,
+Pug could always use more documentation, whether as part of the
+official pug docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback

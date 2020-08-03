@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use quick-pip in a project::
+To use pug in a project::
 
-    import quick_pip
+    import pug

@@ -1,4 +1,4 @@
-Welcome to quick-pip's documentation!
+Welcome to Pug's documentation!
 ======================================
 
 .. toctree::

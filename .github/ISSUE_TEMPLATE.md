@@ -1,4 +1,4 @@
-* quick-pip version:
+* Pug version:
 * Python version:
 * Operating System:
 
