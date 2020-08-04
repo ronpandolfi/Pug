@@ -20,17 +20,11 @@ Pug
 
 
 
-Python Boilerplate contains all the boilerplate you need to create a Python package.
+A cute, lazy, interactive pip wrapper.
 
 
 * Free software: BSD license
 * Documentation: https://pug.readthedocs.io.
-
-
-Features
---------
-
-* TODO
 
 Credits
 -------
