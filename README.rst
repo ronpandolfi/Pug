@@ -3,8 +3,8 @@ Pug
 ===
 
 
-.. image:: https://img.shields.io/pypi/v/quick_pip.svg
-        :target: https://pypi.python.org/pypi/quick_pip
+.. image:: https://img.shields.io/pypi/v/pug.svg
+        :target: https://pypi.python.org/pypi/pug
 
 .. image:: https://img.shields.io/travis/ronpandolfi/pug.svg
         :target: https://travis-ci.com/ronpandolfi/pug
