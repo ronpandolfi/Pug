@@ -3,6 +3,7 @@ import argparse
 from difflib import SequenceMatcher
 import sys
 from pip._internal import parse_command, commands_dict, commands
+from .commands import refresh
 from github import Github
 from .utils import PyPIDistribution, GithubDistribution, print_distributions, print_packages, parse_selection, \
     package_is_installed, Package, keydefaultdict
@@ -25,6 +26,9 @@ def main():
 
     if len(args._) == 0:
         commands.ListCommand().main(sys.argv[1:])
+
+    elif args._[0] == 'refresh':
+        refresh()
 
     else:
 
@@ -54,8 +58,11 @@ def main():
 
         print_packages(packages)
 
-        selected_package_indexes = parse_selection(input("==> Packages to install (eg: 1 2 3, 1-3 or ^4)\n==> "),
-                                                   len(packages))
+        selection = input("==> Packages to install (eg: 1 2 3, 1-3 or ^4)\n==> ")
+        if not selection.strip():
+            return 0
+
+        selected_package_indexes = parse_selection(selection, len(packages))
 
         _package_names = list(packages.keys())
         selected_packages = {_package_names[i - 1]: packages[_package_names[i - 1]] for i in selected_package_indexes}

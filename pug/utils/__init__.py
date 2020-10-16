@@ -19,13 +19,16 @@ class keydefaultdict(defaultdict):
 
 # TODO: add context
 @lru_cache()
-def _installed_packages():
+def installed_packages(editable_only=False):
+    command = [sys.executable, '-m', 'pip', 'list']
+    if editable_only:
+        command.append('-e')
     return [r.decode().split()[0].lower() for r in
-            subprocess.check_output([sys.executable, '-m', 'pip', 'list']).split(b'\n')[2:-1]]
+            subprocess.check_output(command).split(b'\n')[2:-1]]
 
 
 def package_is_installed(name):
-    return name in _installed_packages()
+    return name in installed_packages()
 
 
 class Package(object):
@@ -71,6 +74,10 @@ class PyPIDistribution(Distribution):
 
     def install(self, args):
         InstallCommand().main([self.name, *args])
+
+
+class EditableDistribution(PyPIDistribution):
+    distributor_name = 'editable'
 
 
 class GitDistribution(Distribution):
