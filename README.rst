@@ -3,19 +3,19 @@ Pug
 ===
 
 
-.. image:: https://img.shields.io/pypi/v/pug.svg
-        :target: https://pypi.python.org/pypi/pug
+.. image:: https://img.shields.io/pypi/v/pip-pug.svg
+        :target: https://pypi.python.org/pypi/pip-pug
 
-.. image:: https://img.shields.io/travis/ronpandolfi/pug.svg
-        :target: https://travis-ci.com/ronpandolfi/pug
+.. image:: https://img.shields.io/travis/ronpandolfi/pip-pug.svg
+        :target: https://travis-ci.com/ronpandolfi/pip-pug
 
-.. image:: https://readthedocs.org/projects/pug/badge/?version=latest
-        :target: https://pug.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/pip-pug/badge/?version=latest
+        :target: https://pip-pug.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 
-.. image:: https://pyup.io/repos/github/ronpandolfi/pug/shield.svg
-     :target: https://pyup.io/repos/github/ronpandolfi/pug/
+.. image:: https://pyup.io/repos/github/ronpandolfi/pip-pug/shield.svg
+     :target: https://pyup.io/repos/github/ronpandolfi/pip-pug/
      :alt: Updates
 
 
@@ -24,7 +24,7 @@ A cute, lazy, interactive pip wrapper.
 
 
 * Free software: BSD license
-* Documentation: https://pug.readthedocs.io.
+* Documentation: https://pip-pug.readthedocs.io.
 
 Credits
 -------
