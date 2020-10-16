@@ -17,3 +17,14 @@ options, you'll have some choices.
 You can also list installed packages with::
 
     pug
+
+There are also some special commands Pug provides.
+
+Refresh
+-------
+
+The `refresh` command is useful when working with editable installations which include entry points. Each time a package's entry points change, it must be reinstalled for that change to take effect, even when using editable installations. A quick and lazy way to 'resfresh' those packages is simply::
+
+    pug refresh
+    
+This effectively reinstalls all editable packages, updating their entry points. 
